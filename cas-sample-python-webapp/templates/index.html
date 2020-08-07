@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>CASified Python Flask Application</title> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+</head>
+ 
+<body>
+
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills justify-content-end">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="https://github.com/cas-projects/cas-sample-python-webapp">On Github</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="https://github.com/apereo/cas">CAS on Github</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="/secure">Login</a>
+                    </li>
+                </ul>
+            </nav>
+         <h3 class="text-muted">CASified Python Web Application</h3>
+        </div>
+ 
+        <div class="jumbotron">
+
+            <p><a class="btn btn-lg btn-success" href="/secure" role="button">Login with CAS</a></p>
+
+            <!-- <p><a class="btn btn-lg btn-success" href="https://localhost:8443/cas/oauth2.0/authorize?response_type=code&client_id=clientid-coba&redirect_uri=http://localhost:5000/oauth-callback" role="button">Login with OAUTH</a></p> -->
+            <p><a class="btn btn-lg btn-success" href="http://localhost:8080/cas/oauth2.0/authorize?response_type=code&client_id=clientid-coba&redirect_uri=http://localhost:5000/oauth-callback" role="button">Login with OAUTH</a></p>
+
+        </div>
+
+        <div class="jumbotron" >
+
+            <div style="width: 30%; margin: auto;">
+                <input class="form-control" id="inputUsername" type="text" placeholder="Username" value="casuser">
+                <input class="form-control" id="inputPassword" type="password" placeholder="Password" value="Mellon">
+            </div>
+
+            <br>
+
+            <p><a class="btn btn-lg btn-success" id="rest-auth-button" role="button">Login with REST</a></p>
+
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+        $("#rest-auth-button").click(function(){
+
+            var username = $('#inputUsername').val()
+            var password = $('#inputPassword').val()
+
+            var payload = {
+                // "username": "casuser",
+                // "password": "Mellon"
+                "username": username,
+                "password": password
+            }
+
+            // $.post("https://localhost:8443/cas/v1/tickets", payload, function(data, status){
+            $.post("http://localhost:8080/cas/v1/tickets", payload, function(data, status){
+
+                // alert("Data: " + data + "\nStatus: " + status);
+                alert("Status: " + status);
+
+                // window.location.replace("http://stackoverflow.com");
+                window.location.href = "http://localhost:5000/rest-callback";
+            });
+
+        });
+        });
+    </script>
+</body>
+ 
+</html>
