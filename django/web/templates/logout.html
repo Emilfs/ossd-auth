@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    {% block content %}
+    <a href="{% url 'web:cas_ng_logout' %}">CAS Logout</a>
+    <a href="{% url 'web:oauth2_logout' %}">OAuth2 Logout</a>
+    {% endblock content %}
+</body>

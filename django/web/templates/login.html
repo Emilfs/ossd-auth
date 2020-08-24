@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    {% block content %}
+    <a href="{% url 'web:cas_ng_login' %}">CAS Login</a>
+    <a href="{% url 'social:begin' 'akun' %}">OAuth2 Login</a>
+    {% endblock content %}
+</body>
