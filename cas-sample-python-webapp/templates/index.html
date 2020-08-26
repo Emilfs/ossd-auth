@@ -32,7 +32,8 @@
             <p><a class="btn btn-lg btn-success" href="/secure" role="button">Login with CAS</a></p>
 
             <!-- <p><a class="btn btn-lg btn-success" href="https://localhost:8443/cas/oauth2.0/authorize?response_type=code&client_id=clientid-coba&redirect_uri=http://localhost:5000/oauth-callback" role="button">Login with OAUTH</a></p> -->
-            <p><a class="btn btn-lg btn-success" href="http://localhost:8080/cas/oauth2.0/authorize?response_type=code&client_id=clientid-coba&redirect_uri=http://localhost:5000/oauth-callback" role="button">Login with OAUTH</a></p>
+            <!-- <p><a class="btn btn-lg btn-success" href="http://localhost:8080/cas/oauth2.0/authorize?response_type=code&client_id=clientid-coba&redirect_uri=http://localhost:5000/oauth-callback" role="button">Login with OAUTH</a></p> -->
+            <p><a class="btn btn-lg btn-success" href="https://akun-kp.cs.ui.ac.id/cas/oauth2.0/authorize?response_type=code&client_id=local-sample-client-id&redirect_uri=http://localhost:5000/oauth-callback" role="button">Login with OAUTH</a></p>
 
         </div>
 
@@ -68,7 +69,9 @@
             }
 
             // $.post("https://localhost:8443/cas/v1/tickets", payload, function(data, status){
-            $.post("http://localhost:8080/cas/v1/tickets", payload, function(data, status){
+            // $.post("http://localhost:8080/cas/v1/tickets", payload, function(data, status){
+                $.post("https://akun-kp.cs.ui.ac.id/cas/v1/tickets", payload, function(data, status){
+
 
                 // alert("Data: " + data + "\nStatus: " + status);
                 alert("Status: " + status);

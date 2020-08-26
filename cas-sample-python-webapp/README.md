@@ -2,36 +2,12 @@
 
 This is a sample Python web application using Flask that is protected via an Apereo CAS server using the [Flask CAS extension](https://github.com/cameronbwhite/Flask-CAS).
 
-# Requirements
+# Installation
 
 - Python
 
 ```console
-$ python --version
-Python 2.7.10
-```
-
-- Pip
-
-```console
-$ pip --version
-pip 9.0.1 from /Library/Python/2.7/site-packages (python 2.7)
-```
-
-# Flask CAS Extension
-
-You *may* need to download/install the CAS Flask extension from source locally to obtain a bug fix that helps with CAS attribute parsing. The bug fix, as of this writing, is not yet released.
-
-```bash
-git clone git@github.com:cameronbwhite/Flask-CAS.git
-cd Flask-CAS
-sudo python setup.py install
-```
-
-If you wish to not install the plugin from source, simply execute:
-
-```bash
-sudo pip install Flask-CAS
+pip install -r requirements.txt
 ```
 
 # Run
@@ -72,3 +48,12 @@ app.config['CAS_AFTER_LOGIN'] = 'secure'
 ```
 
 For all other relevant settings, please refer to the [Flask CAS extension](https://github.com/cameronbwhite/Flask-CAS) project.
+
+
+OAuth:
+
+customizable parameter in line 36 in templates/index.html:
+- client_id
+- redirect_uri
+
+reference: https://apereo.github.io/cas/6.2.x/installation/OAuth-OpenId-Authentication.html#endpoints

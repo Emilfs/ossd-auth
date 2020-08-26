@@ -12,10 +12,11 @@ app = Flask(__name__)
 cas = CAS(app, '/cas')
 # app.config['CAS_SERVER'] = 'https://casserver.herokuapp.com'
 # app.config['CAS_SERVER'] = 'https://localhost:8443'
-app.config['CAS_SERVER'] = 'http://localhost:8080'
+# app.config['CAS_SERVER'] = 'http://localhost:8080'
+app.config['CAS_SERVER'] = 'https://akun-kp.cs.ui.ac.id/'
+
 app.config['CAS_AFTER_LOGIN'] = 'secure'
 # app.config['CAS_LOGOUT_ROUTE'] =
-# app.config['CAS_VALIDATE_ROUTE'] =
 # app.config['CAS_VALIDATE_ROUTE'] =
 
 
