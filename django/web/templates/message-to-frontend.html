@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halo</title>
+</head>
+<body>
+    <h1>Halo {{payload}}</h1>
+</body>
+<script type="text/javascript">
+    var token = "{{ payload }}";
+
+    function sendLoginData(event) {
+        // For Chrome, the origin property is in the event.originalEvent object.
+        var origin = event.origin || event.originalEvent.origin;
+            // call postMessage function from the window caller
+            event.source.postMessage(token, origin);
+            // close window
+            window.close();
+    }
+
+    // receive any postmessage to catch the caller window and send the data to there
+    window.addEventListener('message', sendLoginData);
+</script>
+
+</html>

@@ -37,6 +37,7 @@ def oauth2_logout(request):
     auth.logout(request)
     return redirect(settings.LOGOUT_REDIRECT_URL)
 
+
 @api_view(('GET',))
 @login_required(redirect_field_name='next2')
 def profile(request):
@@ -53,6 +54,8 @@ def profile(request):
 
     attributes['app_id'] = settings.APP_ID
 
-    payload = jwt.encode(attributes, settings.APP_SECRET, algorithm='HS256').decode('utf-8')
+    payload = jwt.encode(attributes, settings.APP_SECRET,
+                         algorithm='HS256').decode('utf-8')
 
-    return Response(payload)
+    # return Response(payload)
+    return render(request, "message-to-frontend.html", {'payload': payload})
