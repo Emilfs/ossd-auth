@@ -152,10 +152,9 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/profile'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/logout_success'
 
 # CAS
-
 CAS_SERVER_URL = 'https://akun-kp.cs.ui.ac.id/cas/login'
 CAS_APPLY_ATTRIBUTES_TO_USER = True
 CAS_VERIFY_SSL_CERTIFICATE = False
