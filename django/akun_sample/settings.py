@@ -149,3 +149,8 @@ CAS_VERIFY_SSL_CERTIFICATE = False
 
 SOCIAL_AUTH_AKUN_KEY = 'local-sample-client-id'
 SOCIAL_AUTH_AKUN_SECRET = 'local-sample-client-secret'
+
+# Jitsi App
+
+APP_ID = "csuiacid2020"
+APP_SECRET = "csuiacid2020"

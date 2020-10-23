@@ -3,6 +3,11 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
+import jwt
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.decorators import api_view
+
 
 # Create your views here.
 def index(request):
@@ -30,7 +35,7 @@ def oauth2_logout(request):
     auth.logout(request)
     return redirect(settings.LOGOUT_REDIRECT_URL)
 
-
+@api_view(('GET',))
 @login_required(redirect_field_name='next2')
 def profile(request):
     attributes = {}
@@ -41,7 +46,15 @@ def profile(request):
     if "attributes" in request.session:
         attributes["cas"] = request.session["attributes"]
 
-    return render(request, 'profile.html', context={
-        'title': 'Profile',
-        'attributes': attributes,
-    })
+    if not attributes:
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    attributes['app_id'] = settings.APP_ID
+
+    payload = jwt.encode(attributes, settings.APP_SECRET, algorithm='HS256').decode('utf-8')
+
+    # return render(request, 'profile.html', context={
+    #     'title': 'Profile',
+    #     'attributes': payload,
+    # })
+    return Response(payload)
