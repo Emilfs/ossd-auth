@@ -10,6 +10,9 @@ from rest_framework.response import Response
 
 # Create your views here.
 def index(request):
+    if request.user.is_authenticated:
+        location = request.GET.get('next2') or settings.LOGIN_REDIRECT_URL
+        return redirect(location)
     return render(request, 'index.html', context={
         'title': 'Index',
     })
