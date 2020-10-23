@@ -1,12 +1,11 @@
+import jwt
 from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-
-import jwt
-from rest_framework.response import Response
+from django.shortcuts import redirect, render
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -53,8 +52,4 @@ def profile(request):
 
     payload = jwt.encode(attributes, settings.APP_SECRET, algorithm='HS256').decode('utf-8')
 
-    # return render(request, 'profile.html', context={
-    #     'title': 'Profile',
-    #     'attributes': payload,
-    # })
     return Response(payload)

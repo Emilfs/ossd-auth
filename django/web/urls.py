@@ -1,7 +1,8 @@
 import django_cas_ng.views
 from django.urls import path
 
-from .views import index, login, profile, logout, oauth2_logout
+from .views import index, login, logout, oauth2_logout, profile
+
 
 app_name = "web"
 
