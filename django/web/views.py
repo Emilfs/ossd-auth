@@ -38,6 +38,7 @@ def oauth2_logout(request):
     return redirect(settings.LOGOUT_REDIRECT_URL)
 
 
+# @login_required(redirect_field_name='next2')
 def logout_success(request):
     return render(request, "logout-to-frontend.html")
 

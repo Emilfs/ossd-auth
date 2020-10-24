@@ -32,13 +32,6 @@ ALLOWED_HOSTS = ['*']
 # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:3000',
-# ]
-# If this is used, then not need to use `CORS_ORIGIN_ALLOW_ALL = True`
-# CORS_ORIGIN_REGEX_WHITELIST = [
-#     'http://localhost:3000',
-# ]
 
 
 # Application definition
@@ -158,6 +151,11 @@ LOGOUT_REDIRECT_URL = '/logout_success'
 CAS_SERVER_URL = 'https://akun-kp.cs.ui.ac.id/cas/login'
 CAS_APPLY_ATTRIBUTES_TO_USER = True
 CAS_VERIFY_SSL_CERTIFICATE = False
+CAS_VERSION = "3"
+CAS_LOGOUT_URL_NAME = "logout_success"
+CAS_LOGIN_URL_NAME = "profile"
+CAS_IGNORE_REFERER = True
+# CAS_REDIRECT_URL = "/logout_success"
 
 
 # Social App Django
