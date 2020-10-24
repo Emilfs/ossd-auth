@@ -26,12 +26,25 @@ SECRET_KEY = '6ud)o=&bepb)0y!)#&f-8(ji&%^tz2as8gr6$7n-b)9v%*7zu^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+# CORS
+# If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000',
+# ]
+# If this is used, then not need to use `CORS_ORIGIN_ALLOW_ALL = True`
+# CORS_ORIGIN_REGEX_WHITELIST = [
+#     'http://localhost:3000',
+# ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +59,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,10 +152,9 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/profile'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/logout_success'
 
 # CAS
-
 CAS_SERVER_URL = 'https://akun-kp.cs.ui.ac.id/cas/login'
 CAS_APPLY_ATTRIBUTES_TO_USER = True
 CAS_VERIFY_SSL_CERTIFICATE = False

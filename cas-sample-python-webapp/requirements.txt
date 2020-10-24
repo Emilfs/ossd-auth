@@ -1,9 +1,0 @@
-click
-Flask
-# Flask-CAS
-itsdangerous
-Jinja2
-MarkupSafe
-Werkzeug
-xmltodict
-# certifi

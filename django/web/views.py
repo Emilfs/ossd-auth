@@ -37,6 +37,30 @@ def oauth2_logout(request):
     auth.logout(request)
     return redirect(settings.LOGOUT_REDIRECT_URL)
 
+
+@api_view(('GET',))
+@login_required(redirect_field_name='next2')
+def logout_success(request):
+    attributes = {}
+
+    if request.user.social_auth.exists():
+        attributes["oauth2"] = request.user.social_auth.get().extra_data
+
+    if "attributes" in request.session:
+        attributes["cas"] = request.session["attributes"]
+
+    if not attributes:
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    attributes['app_id'] = settings.APP_ID
+
+    payload = jwt.encode(attributes, settings.APP_SECRET,
+                         algorithm='HS256').decode('utf-8')
+
+    # return Response(payload)
+    return render(request, "logout-to-frontend.html", {'payload': payload})
+
+
 @api_view(('GET',))
 @login_required(redirect_field_name='next2')
 def profile(request):
@@ -53,6 +77,8 @@ def profile(request):
 
     attributes['app_id'] = settings.APP_ID
 
-    payload = jwt.encode(attributes, settings.APP_SECRET, algorithm='HS256').decode('utf-8')
+    payload = jwt.encode(attributes, settings.APP_SECRET,
+                         algorithm='HS256').decode('utf-8')
 
-    return Response(payload)
+    # return Response(payload)
+    return render(request, "message-to-frontend.html", {'payload': payload})
