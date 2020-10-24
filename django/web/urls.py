@@ -1,6 +1,7 @@
 import django_cas_ng.views
 from django.urls import path
 
+
 from .views import index, login, logout, oauth2_logout, profile, logout_success
 
 
