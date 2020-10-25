@@ -1,2 +1,2 @@
-web: gunicorn akun_sample.wsgi --log-file -
+web: gunicorn akun_sample.wsgi
 
