@@ -26,7 +26,7 @@ SECRET_KEY = '6ud)o=&bepb)0y!)#&f-8(ji&%^tz2as8gr6$7n-b)9v%*7zu^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'jitsi-editreadmedapatbaju.cs.ui.ac.id']
 
 # CORS
 # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
@@ -143,19 +143,19 @@ AUTHENTICATION_BACKENDS = (
     'web.backends.AkunOAuth2',
 )
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/profile'
-LOGOUT_REDIRECT_URL = '/logout_success'
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = '/auth/profile'
+LOGOUT_REDIRECT_URL = '/auth/logout_success'
 
 # CAS
 CAS_SERVER_URL = 'https://akun-kp.cs.ui.ac.id/cas/login'
 CAS_APPLY_ATTRIBUTES_TO_USER = True
-CAS_VERIFY_SSL_CERTIFICATE = False
+CAS_VERIFY_SSL_CERTIFICATE = True
 CAS_VERSION = "3"
 CAS_LOGOUT_URL_NAME = "logout_success"
 CAS_LOGIN_URL_NAME = "profile"
 CAS_IGNORE_REFERER = True
-# CAS_REDIRECT_URL = "/logout_success"
+CAS_REDIRECT_URL = "/auth/"
 
 
 # Social App Django
